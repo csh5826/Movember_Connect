@@ -25,14 +25,30 @@ router.get('/generate-fake-data', (req, res, next) => {
 router.get('/participants', (req,res, next) => {
     //optional queries to filter participants by
     const cause = req.query.cause;
+    const pledge = req.query.pledge;
     let query = {};
+    let x = {};
 
     // if query is sent, add the query to our query object
     if (cause) {
         query.cause = cause
     }
+    if (pledge) {
+        if (pledge === 'high'){
+            x = {$gte:100}
+        }
+        if (pledge === 'low'){
+            x = {$lt:100}
+            // works :  {pledge: {$lt:100}}
+        }
+    }
+    // if no pledge param, make sure all participants are grabbed
+    if (!pledge) {
+            x = {$gt:0}
+    }
     Participant
     .find(query)
+    .find({pledge: x})
     .exec((err, participants)=>{
         Participant.countDocuments().exec((err, count) =>{
             Participant.aggregate([{$group: {_id: null, total: {$sum: "$pledge"}}}]).exec((err, total) =>{
