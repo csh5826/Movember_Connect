@@ -1,9 +1,9 @@
 const router = require('express').Router()
 const { response } = require('express')
 const faker = require('faker')
-const participant = require('../models/participant')
 const Participant = require('../models/participant')
 
+// generates fake data for participants
 router.get('/generate-fake-data', (req, res, next) => {
     for (let i = 0; i < 5; i++) {
       let participant = new Participant()
@@ -19,9 +19,34 @@ router.get('/generate-fake-data', (req, res, next) => {
     res.end()
   })
 
-// get the list of all participants
-router.get('/participants', (req,res, next) => {
+// get the list of all participants as well as the total count
 
+//TODO 
+//get a count of the total pledge value
+// filter based on pledge > 100 and < 100 
+
+router.get('/participants', (req,res, next) => {
+    //optional queries to filter participants by
+    const cause = req.query.cause;
+    let query = {};
+
+    // if query is sent, add the query to our query object
+    if (cause) {
+        query.cause = cause
+    }
+    Participant
+    .find(query)
+    .exec((err, participants)=>{
+        Participant.count().exec((err, count) =>{
+            if (err) throw err
+            else {
+                let info = {};
+                info.count = count
+                info.participants = participants
+                res.send(info)
+            }
+        })
+  })
 })
 
 // create a new participant in the db
