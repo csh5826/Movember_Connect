@@ -17,7 +17,3 @@ const ParticipantSchema = new Schema({
 
 module.exports = mongoose.model('Participant', ParticipantSchema)
 
-//"name":"Franco","latitude":"35.991947",
-//"longitude":"-78.903871",
-//"pledge":49047,
-//"story":"Alias minus quia et. Est perspiciatis animi beatae. Ea porro qui cupiditate iste dolore porro rerum. Ut aperiam et facere. Quos dicta perspiciatis et at expedita delectus enim. Totam deserunt reiciendis provident ratione id optio harum cumque non."
