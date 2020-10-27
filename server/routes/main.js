@@ -19,10 +19,7 @@ router.get('/generate-fake-data', (req, res, next) => {
     res.end()
   })
 
-// get the list of all participants as well as the total count
-
 //TODO 
-//get a count of the total pledge value
 // filter based on pledge > 100 and < 100 
 
 router.get('/participants', (req,res, next) => {
@@ -37,14 +34,17 @@ router.get('/participants', (req,res, next) => {
     Participant
     .find(query)
     .exec((err, participants)=>{
-        Participant.count().exec((err, count) =>{
-            if (err) throw err
-            else {
+        Participant.countDocuments().exec((err, count) =>{
+            Participant.aggregate([{$group: {_id: null, total: {$sum: "$pledge"}}}]).exec((err, total) =>{
+                if (err) throw err
+                else {
                 let info = {};
-                info.count = count
+                info.totalParticipants = count
+                info.totalPledged = total
                 info.participants = participants
                 res.send(info)
-            }
+                }
+            })            
         })
   })
 })
