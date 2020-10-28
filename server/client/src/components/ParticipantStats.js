@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import { makeStyles } from "@material-ui/core/styles";
-import Container from '@material-ui/core/Container';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchParticipants } from '../actions'
@@ -10,12 +8,12 @@ class ParticipantStats extends Component {
 
     componentDidMount(){
         this.props.fetchParticipants()
-        console.log('props are', this.props.participants)
+        // console.log('props are', this.props.participants)
     }
     render(){
         return (
         <div style={{marginTop: 75, textAlign: 'center'}}>
-            <h1>{this.props.participants.totalParticipants} participating and $ pledged</h1>
+            <h1>{this.props.participantsData.totalParticipants} participating and $ pledged</h1>
         </div>
         )
         //{this.props.participants.totalPledged[0].total}
@@ -24,7 +22,7 @@ class ParticipantStats extends Component {
 
 
 function mapStateToProps(state) {
-    return { participants: state.participants }; 
+    return { participantsData: state.participantsData }; 
 }
 
 function mapDispatchToProps(dispatch){

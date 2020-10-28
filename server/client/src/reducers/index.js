@@ -3,7 +3,7 @@ import participants from './participants-reducer';
 
 // combines all our reducers into one
 const rootReducer = combineReducers({
-    participants: participants
+    participantsData: participants
 
 })
 

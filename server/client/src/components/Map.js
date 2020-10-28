@@ -23,7 +23,9 @@ class Map extends Component {
     //render the map on load of page
     componentDidMount() {
         this.props.fetchParticipants()
-        console.log('props in map are', this.props.participants)
+        // console.log('props in map are', this.props.participants)
+        // console.log(this.props.participantsData.participants[0].location.coordinates[0]) //longitude
+        // console.log(this.props.participantsData.participants[0].location.coordinates[1]) //latitude
         const map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
@@ -38,13 +40,14 @@ class Map extends Component {
                 zoom: map.getZoom().toFixed(2)
             });
         });
-        // hardcoded markers added to our map
-         new mapboxgl.Marker()
-    .setLngLat([  -78.901318, 35.995930 ])
-    .addTo(map);
-    new mapboxgl.Marker()
-    .setLngLat([  -79.901318, 35.995930 ])
-    .addTo(map);
+        map.on('load', () =>{
+            // creates points for all coordinates in database
+            this.props.participantsData.participants.map(participant => {
+                new mapboxgl.Marker().setLngLat(participant.location.coordinates).addTo(map)
+                // console.log(participant.location.coordinates)
+            })
+        })
+    
     }
 
     render() {
@@ -63,7 +66,7 @@ class Map extends Component {
 }
 
 function mapStateToProps(state) {
-    return { participants: state.participants }; 
+    return { participantsData: state.participantsData }; 
 }
 
 function mapDispatchToProps(dispatch){
