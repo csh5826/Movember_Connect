@@ -47,7 +47,7 @@ const NewParticipant = () => {
     </div>
       <Container maxWidth='xs'>
         <FormGroup className={classes.formGroup}>
-            <TextField id="outlined-basic" fullWidth label="Name" variant="outlined" color="#8000000" className={classes.textField}/>
+            <TextField id="outlined-basic" fullWidth label="Name" variant="outlined" className={classes.textField}/>
             <TextField id="outlined-basic" fullWidth label="Location" variant="outlined" className={classes.textField}/>
             <InputLabel id="demo-simple-select-label" fullWidth className={classes.textField}>Your Cause</InputLabel>
         <Select

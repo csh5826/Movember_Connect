@@ -1,23 +1,34 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { makeStyles } from "@material-ui/core/styles";
-import Container from '@material-ui/core/Container'
+import Container from '@material-ui/core/Container';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchParticipants } from '../actions'
 
-// styles this content
-const useStyles = makeStyles({
-    stats: {
-        text: 'center',
-        background: 'red'
+
+class ParticipantStats extends Component {
+
+    componentDidMount(){
+        this.props.fetchParticipants()
+        console.log('props are', this.props.participants)
     }
-})
-
-
-const ParticipantStats = () => {
-    const classes = useStyles()
-    return (
-    <div style={{marginTop: 75, textAlign: 'center'}}>
-        <h1>402 participating and $10,241 pledged</h1>
-    </div>
-    )
+    render(){
+        return (
+        <div style={{marginTop: 75, textAlign: 'center'}}>
+            <h1>{this.props.participants.totalParticipants} participating and $ pledged</h1>
+        </div>
+        )
+        //{this.props.participants.totalPledged[0].total}
+    }
 }
 
-export default ParticipantStats;
+
+function mapStateToProps(state) {
+    return { participants: state.participants }; 
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({ fetchParticipants }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ParticipantStats);

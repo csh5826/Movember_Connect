@@ -1,7 +1,11 @@
 import React, { Fragment, Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import Container from '@material-ui/core/Container';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchParticipants } from '../actions'
 import '../style.css';
+
 
 mapboxgl.accessToken =
     'pk.eyJ1IjoiY3NoNTgyNiIsImEiOiJja2Y4ODRnbm0wNmRmMnlvMzJsZHllYWNmIn0.ahh2fZ9MyzBjG2ZAmfRzoQ';
@@ -18,6 +22,8 @@ class Map extends Component {
     }
     //render the map on load of page
     componentDidMount() {
+        this.props.fetchParticipants()
+        console.log('props in map are', this.props.participants)
         const map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/mapbox/streets-v11',
@@ -56,4 +62,12 @@ class Map extends Component {
     }
 }
 
-export default Map;
+function mapStateToProps(state) {
+    return { participants: state.participants }; 
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({ fetchParticipants }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);
