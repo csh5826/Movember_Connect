@@ -12,7 +12,7 @@ class Map extends Component {
         this.state = {
             lng: -78.9032316,
             lat: 35.9962091,
-            zoom: 10
+            zoom: 9
         };
     }
     //render the map on load of page

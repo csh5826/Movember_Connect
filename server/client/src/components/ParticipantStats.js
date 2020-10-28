@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 })
 
 
-const ParticipantsPledged = () => {
+const ParticipantStats = () => {
     const classes = useStyles()
     return (
     <div style={{marginTop: 75, textAlign: 'center'}}>
@@ -20,4 +20,4 @@ const ParticipantsPledged = () => {
     )
 }
 
-export default ParticipantsPledged;
+export default ParticipantStats;
