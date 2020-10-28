@@ -23,8 +23,8 @@ const NavBar = () => {
     const classes = useStyles()
     return (
         <Fragment>
-            <AppBar position="fixed" className={classes.appBar}>
-                <Toolbar>
+            <AppBar position="fixed">
+                <Toolbar className={classes.appBar}>
                     <Typography variant="h4">
                         Movember Connect
                     </Typography>

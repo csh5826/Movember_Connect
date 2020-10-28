@@ -12,7 +12,7 @@ class Map extends Component {
         this.state = {
             lng: -78.9032316,
             lat: 35.9962091,
-            zoom: 14
+            zoom: 10
         };
     }
     //render the map on load of page
@@ -42,7 +42,7 @@ class Map extends Component {
                         Longitude: {this.state.lng} | Latitude: {this.state.lat} |
                         Zoom: {this.state.zoom}
                      </div>
-                        <div ref={(el) => (this.mapContainer = el)} className='mapContainer'/>
+                        <div ref={(el) => (this.mapContainer = el)} style={{height: 700}}/>
                     </div>
                 </Container>
             </Fragment>
