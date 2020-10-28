@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from 'react-router-dom';
 
 // styles for navbar
 const useStyles = makeStyles({
@@ -29,8 +30,8 @@ const NavBar = () => {
                         Movember Connect
                     </Typography>
                 <section className={classes.rightToolbar}>
-                    <Button color="inherit" className={classes.home}>Home</Button>
-                    <Button color="inherit">Share your story</Button>
+                    <Link style={{color:'white'}} to='/'><Button color="inherit" className={classes.home}>Home</Button></ Link>
+                    <Link style={{color:'white'}} to='/participants/new'><Button color="inherit">Share your story</Button></ Link>
                 </section>
                 </Toolbar>
             </AppBar>
