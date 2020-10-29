@@ -7,10 +7,13 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel'
 import Button from '@material-ui/core/Button';
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
+import { createParticipant } from '../actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 // styles for new participant form
-const useStyles = makeStyles({
+const styles = () =>({
   formGroup: {
       alignItems: 'center'
   },
@@ -38,13 +41,9 @@ const useStyles = makeStyles({
   }
 })
 
-const NewParticipant = () => {
-  const classes = useStyles();
-
-  const [cause, setCause] = React.useState('')
-  const handleChange = (event) => {
-    setCause(event.target.value)
-  }
+class NewParticipant extends React.Component {
+  render() {
+    const { classes } = this.props;
   return (
     <Fragment>
         <NavBar />
@@ -59,8 +58,8 @@ const NewParticipant = () => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={cause}
-          onChange={handleChange}
+          value={this.cause}
+          onChange={this.handleChange}
           fullWidth
           className={classes.textField, classes.select}
         >
@@ -70,11 +69,20 @@ const NewParticipant = () => {
         </Select>
             <TextField id="outlined-basic" fullWidth label="Pledge" variant="outlined" className={classes.textField}/>
             <TextField id="outlined-basic" fullWidth label="Your Why" variant="outlined" className={classes.textField}/>
-            <Button variant="contained" className={classes.button}>Submit</Button>
+            <Button variant="contained" className={classes.button} onClick={this.sendParticipant}>Submit</Button>
         </FormGroup>
       </Container>
     </Fragment>
   );
+  }
 }
 
-export default NewParticipant;
+function mapStateToProps(state) {
+  return { newParticipant: state.newParticipant }; 
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ createParticipant }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NewParticipant));
