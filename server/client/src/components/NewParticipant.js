@@ -6,12 +6,13 @@ import Container from '@material-ui/core/Container';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel'
+import Button from '@material-ui/core/Button';
 import { makeStyles } from "@material-ui/core/styles";
 
 // styles for new participant form
 const useStyles = makeStyles({
   formGroup: {
-      alignItems: 'center',
+      alignItems: 'center'
   },
   textField: {
     marginTop: 40,
@@ -29,6 +30,11 @@ const useStyles = makeStyles({
     '&:after': {
       borderColor: '#800000'
     }   
+  },
+  button: {
+    backgroundColor: '#800000',
+    color: 'white',
+    marginTop: 15
   }
 })
 
@@ -64,6 +70,7 @@ const NewParticipant = () => {
         </Select>
             <TextField id="outlined-basic" fullWidth label="Pledge" variant="outlined" className={classes.textField}/>
             <TextField id="outlined-basic" fullWidth label="Your Why" variant="outlined" className={classes.textField}/>
+            <Button variant="contained" className={classes.button}>Submit</Button>
         </FormGroup>
       </Container>
     </Fragment>
