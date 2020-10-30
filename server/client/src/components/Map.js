@@ -44,7 +44,7 @@ class Map extends Component {
             // creates points for all coordinates in database
             this.props.participantsData.participants.map(participant => {
                 new mapboxgl.Marker().setLngLat(participant.location.coordinates).addTo(map)
-                console.log(participant.location.coordinates)
+                // console.log(participant.location.coordinates)
             })
         })
     

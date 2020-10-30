@@ -15,11 +15,14 @@ export function fetchParticipants () {
 }
 
 // create a new participant
-export function createParticipant(cause, location, name, pledge, story) {
+export function createParticipant(participant) {
     // user_Id = user_Id.toString();
     // channel = channel.toString();
-      const res = axios.post(`${ROOT_URL}`, {});
+    console.log('the participant is', participant)
+      const res = axios.post(`${ROOT_URL}`, participant);
       console.log('received from server, created a new participant', res)
-      return { type: CREATE_PARTICIPANT, payload: res}
-    
-    }
+      return { 
+            type: CREATE_PARTICIPANT, 
+            payload: res
+      };    
+}

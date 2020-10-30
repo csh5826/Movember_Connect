@@ -11,6 +11,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { createParticipant } from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 
 // styles for new participant form
 const styles = () =>({
@@ -41,7 +42,40 @@ const styles = () =>({
   }
 })
 
+// sendParticipant= () => {
+
+// }
 class NewParticipant extends React.Component {
+  constructor (){
+    super()
+    this.state = {
+      name : '',
+      location : '',
+      cause : '',
+      pledge: null,
+      story: ''
+    }
+    this.handleSubmit=this.handleSubmit.bind(this)
+    console.log('state is', this.state)
+  }
+
+
+  handleSubmit() {
+    let newParticipant = {
+      name: this.state.name,
+      location: this.state.location,
+      cause: this.state.cause,
+      pledge: this.state.pledge,
+      story: this.state.story
+    }
+    if (this.state.name === '' || this.state.location === '' || this.state.cause === '' || this.state.pledge === '' || this.state.story === ''){
+      alert('Please fill out all fields before submitting')
+    }
+    else {
+      console.log('new participant data', newParticipant);
+      this.props.createParticipant(newParticipant)
+    }
+  }
   render() {
     const { classes } = this.props;
   return (
@@ -52,14 +86,14 @@ class NewParticipant extends React.Component {
     </div>
       <Container maxWidth='xs'>
         <FormGroup className={classes.formGroup}>
-            <TextField id="outlined-basic" fullWidth label="Name" variant="outlined" className={classes.textField}/>
-            <TextField id="outlined-basic" fullWidth label="Location" variant="outlined" className={classes.textField}/>
+            <TextField id="outlined-basic" fullWidth label="Name" variant="outlined" className={classes.textField} onChange={e => this.setState({name: e.target.value})}/>
+            <TextField id="outlined-basic" fullWidth label="Location" variant="outlined" className={classes.textField} onChange={e => this.setState({location: e.target.value})}/>
             <InputLabel id="demo-simple-select-label" fullWidth className={classes.textField}>Your Cause</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={this.cause}
-          onChange={this.handleChange}
+          value={this.state.cause}
+          onChange={e => this.setState({cause: e.target.value})}
           fullWidth
           className={classes.textField, classes.select}
         >
@@ -67,9 +101,9 @@ class NewParticipant extends React.Component {
           <MenuItem value={'Testicular Cancer'}>Testicular Cancer</MenuItem>
           <MenuItem value={'Testicular Cancer'}>Men's mental health awareness</MenuItem>
         </Select>
-            <TextField id="outlined-basic" fullWidth label="Pledge" variant="outlined" className={classes.textField}/>
-            <TextField id="outlined-basic" fullWidth label="Your Why" variant="outlined" className={classes.textField}/>
-            <Button variant="contained" className={classes.button} onClick={this.sendParticipant}>Submit</Button>
+            <TextField id="outlined-basic" fullWidth label="Pledge" variant="outlined" className={classes.textField} onChange={e => this.setState({pledge: e.target.value})}/>
+            <TextField id="outlined-basic" multiline fullWidth label="Your Why" variant="outlined" className={classes.textField} onChange={e => this.setState({story: e.target.value})}/>
+            <Link to='/'><Button variant="contained" className={classes.button} onClick={this.handleSubmit}>Submit</Button></Link>
         </FormGroup>
       </Container>
     </Fragment>
@@ -77,12 +111,9 @@ class NewParticipant extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { newParticipant: state.newParticipant }; 
-}
 
 function mapDispatchToProps(dispatch){
   return bindActionCreators({ createParticipant }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NewParticipant));
+export default connect(null, mapDispatchToProps)(withStyles(styles)(NewParticipant));
