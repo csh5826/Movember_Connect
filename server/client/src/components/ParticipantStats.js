@@ -11,11 +11,21 @@ class ParticipantStats extends Component {
     //     // console.log('props are', this.props.participants)
     // }
     render(){
-        return (
-        <div style={{marginTop: 75, textAlign: 'center'}}>
-            <h1>{this.props.participantsData.totalParticipants} participating and $ pledged</h1>
-        </div>
-        )
+        if (this.props.participantsData.totalPledged.length === 0){
+            return (
+                <div style={{marginTop: 75, textAlign: 'center'}}>
+                    Loading...
+                </div>
+            )
+        }
+        else {
+            return (
+                <div style={{marginTop: 75, textAlign: 'center'}}>
+                    <h1>{this.props.participantsData.totalParticipants} participating and ${this.props.participantsData.totalPledged[0].total} pledged</h1>
+                </div>
+                )
+        }
+       
         // doesnt like looking for the 0 index for whatever reason
         //{this.props.participantsData.totalPledged[0].total}
     }
