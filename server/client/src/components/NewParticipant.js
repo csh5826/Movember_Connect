@@ -51,7 +51,7 @@ class NewParticipant extends React.Component {
     super()
     this.state = {
       name : '',
-      location : '',
+      address : '',
       cause : '',
       pledge: null,
       story: ''
@@ -64,7 +64,7 @@ class NewParticipant extends React.Component {
   handleSubmit() {
     let newParticipant = {
       name: this.state.name,
-      location: this.state.location,
+      address: this.state.address,
       cause: this.state.cause,
       pledge: this.state.pledge,
       story: this.state.story
@@ -96,7 +96,7 @@ class NewParticipant extends React.Component {
       <Container maxWidth='xs'>
         <FormGroup className={classes.formGroup}>
             <TextField id="outlined-basic" fullWidth label="Name" variant="outlined" className={classes.textField} onChange={e => this.setState({name: e.target.value})}/>
-            <TextField id="outlined-basic" fullWidth label="Location" variant="outlined" className={classes.textField} onChange={e => this.setState({location: e.target.value})}/>
+            <TextField id="outlined-basic" fullWidth label="Location" variant="outlined" className={classes.textField} onChange={e => this.setState({address: e.target.value})}/>
             <InputLabel id="demo-simple-select-label" fullWidth className={classes.textField}>Your Cause</InputLabel>
         <Select
           labelId="demo-simple-select-label"

@@ -76,10 +76,24 @@ router.get('/participants', (req,res, next) => {
 })
 
 // create a new participant in the db
-router.post('/participants', (req,res, next) => {
-    let participant = new Participant(req.body);
-    participant.save()
-    res.send(participant)
+// router.post('/participants', (req,res, next) => {
+//     let participant = new Participant(req.body);
+//     participant.save()
+//     res.send(participant)
+// })
+
+router.post('/participants', async (req,res, next) => {
+  try {
+      const participant = await Participant.create(req.body);
+
+      return res.status(200).json({
+          success: true,
+          data: participant
+      });
+  } catch (err) {
+      console.log(err);
+      res.status(500);
+  }
 })
 
 // get participant by id

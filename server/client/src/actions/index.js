@@ -19,7 +19,7 @@ export function createParticipant(participant) {
     // user_Id = user_Id.toString();
     // channel = channel.toString();
     console.log('the participant is', participant)
-      const res = axios.post(`${ROOT_URL}`, participant);
+      const res = axios.post(`${ROOT_URL}`, participant)
       console.log('received from server, created a new participant', res)
       return { 
             type: CREATE_PARTICIPANT, 
