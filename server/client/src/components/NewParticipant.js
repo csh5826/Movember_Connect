@@ -11,7 +11,8 @@ import { withStyles } from "@material-ui/core/styles";
 import { createParticipant } from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
 
 // styles for new participant form
 const styles = () =>({
@@ -74,6 +75,14 @@ class NewParticipant extends React.Component {
     else {
       console.log('new participant data', newParticipant);
       this.props.createParticipant(newParticipant)
+      let history = this.props.history;
+      // set a timeout to ensure that the home page will have the new data submitted
+      setTimeout(
+        function(){
+          history.push('/')
+        },
+      1000)  
+    
     }
   }
   render() {
@@ -103,7 +112,7 @@ class NewParticipant extends React.Component {
         </Select>
             <TextField id="outlined-basic" fullWidth label="Pledge" variant="outlined" className={classes.textField} onChange={e => this.setState({pledge: e.target.value})}/>
             <TextField id="outlined-basic" multiline fullWidth label="Your Why" variant="outlined" className={classes.textField} onChange={e => this.setState({story: e.target.value})}/>
-            <Link to='/'><Button variant="contained" className={classes.button} onClick={this.handleSubmit}>Submit</Button></Link>
+            <Button variant="contained" className={classes.button} onClick={this.handleSubmit}>Submit</Button>
         </FormGroup>
       </Container>
     </Fragment>
@@ -116,4 +125,4 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({ createParticipant }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(withStyles(styles)(NewParticipant));
+export default connect(null, mapDispatchToProps)(withRouter(withStyles(styles)(NewParticipant)));
