@@ -18,7 +18,10 @@ const ParticipantSchema = new Schema({
     },
     cause: String,
     pledge: Number, 
-    story: String
+    story: String,
+    time : {type: Date, 
+        default: Date.now 
+    }
 
 })
 
@@ -36,8 +39,6 @@ ParticipantSchema.pre('save', async function(next) {
     this.address = undefined;
     next();
 });
-
-// geoJSON in mongoose, make sure you put LONGITUDE first, then LATITUDE
 
 module.exports = mongoose.model('Participant', ParticipantSchema)
 
