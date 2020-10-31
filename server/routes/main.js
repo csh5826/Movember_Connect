@@ -3,25 +3,20 @@ const { response } = require('express')
 const faker = require('faker')
 const Participant = require('../models/participant')
 
-// Participant.create({
-//     name: 'Joe Dirt',
-//     location: {
-//         type: 'Point',
-//         coordinates: [-78.455555, 37.111432]
-//     },
-//     cause: "Testicular cancer",
-//     pledge: 165,
-//     story:"Alias minus quia et. Est perspiciatis animi beatae. Ea porro qui cupiditate iste dolore porro rerum. Ut aperiam et facere. Quos dicta perspiciatis et at expedita delectus enim. Totam deserunt reiciendis provident ratione id optio harum cumque non."
-// })
 
 // generates fake data for participants
 router.get('/generate-fake-data', (req, res, next) => {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 1000; i++) {
       let participant = new Participant()
-  
+      // 'Men\'s mental health awareness'
+      // 'Testicular cancer'
+      // 'Prostate cancer'
       participant.name = faker.name.firstName()
-      participant.pledge = faker.commerce.price()
+      participant.address = faker.address.streetAddress()
+      participant.cause = 'Men\'s mental health awareness'
+      participant.pledge = Math.floor(Math.random() * 200)+ 1
       participant.story = faker.lorem.sentences()
+      participant.time = faker.date.between('2020-11-01', '2020-11-31')
   
       participant.save((err) => {
         if (err) throw err
