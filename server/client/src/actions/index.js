@@ -3,6 +3,8 @@ import axios from 'axios';
 export const FETCH_PARTICIPANTS = 'fetch_participants';
 export const CREATE_PARTICIPANT = 'create_participant';
 export const FETCH_CAUSE_DATA = 'fetch_cause_data';
+export const FETCH_WEEKLY_DATA = 'fetch_weekly_data';
+
 const ROOT_URL = 'http://localhost:8000';
 let QUERY = ''
 
@@ -36,5 +38,15 @@ export function fetchCauseData(params){
     return {
         type: FETCH_CAUSE_DATA,
         payload: request        
+    };
+}
+
+//get weekly participant data
+export function fetchWeeklyData(){
+    QUERY = '/timedata'
+    const request = axios.get(ROOT_URL + QUERY)
+    return {
+        type: FETCH_WEEKLY_DATA,
+        payload: request
     };
 }

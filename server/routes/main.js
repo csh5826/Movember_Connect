@@ -155,20 +155,6 @@ router.get('/timedata', (req, res, next) => {
           })
     })
 })
-
-// router.get('/timedata', (req, res, next) => {
-//     Participant.aggregate([{$match:
-//         {'time': {$gte: new Date('2020-11-01T00:00:00.000Z'), $lt: new Date('2020-11-08T00:00:00.000Z')}}},
-//         {$group: {_id:null, weekOne: {$sum: 1}}}]).exec((err, weekOne) => {
-//           if (err) throw err
-//           else {
-//             let data = {};
-//             data.weekOneCount = weekOne
-//             res.send(data)
-//           }
-//         })
-      
-// })
   module.exports = router
 
 
