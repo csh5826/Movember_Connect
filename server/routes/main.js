@@ -70,13 +70,6 @@ router.get('/participants', (req,res, next) => {
   })
 })
 
-// create a new participant in the db
-// router.post('/participants', (req,res, next) => {
-//     let participant = new Participant(req.body);
-//     participant.save()
-//     res.send(participant)
-// })
-
 router.post('/participants', async (req,res, next) => {
   try {
       const participant = await Participant.create(req.body);
@@ -105,4 +98,28 @@ router.post('/participants', async (req,res, next) => {
     })
 })
 
+// get specific cause data
+router.get('/cause', (req, res, next) => {
+  // required query
+  const cause = req.query.cause;
+  let query = {};
+  query.cause = cause;
+    Participant.countDocuments(query).exec((err, count) =>{
+      Participant.aggregate([{$match: 
+        {'cause': cause}},
+        {$group: {_id: null, total: {$sum: "$pledge"}}}])
+        .exec((err, total) =>{
+          if (err) throw err
+          else {
+          let info = {};
+          info.specificTotalParticipants = count
+          info.specificTotalPledged = total
+          res.send(info)
+          }
+      })
+    })
+})
+
   module.exports = router
+
+
