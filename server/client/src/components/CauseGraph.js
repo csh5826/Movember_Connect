@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 import {Bar} from 'react-chartjs-2';
 import { connect } from 'react-redux';
 
-class FirstGraph extends Component {
+class CauseGraph extends Component {
     
   render() {
     // get variables from our props
@@ -57,4 +57,4 @@ function mapStateToProps(state) {
   return { participantsCauseData: state.participantsCauseData }; 
 }
 
-export default connect(mapStateToProps)(FirstGraph);
+export default connect(mapStateToProps)(CauseGraph);
