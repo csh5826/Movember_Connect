@@ -6,7 +6,6 @@ import { withStyles } from "@material-ui/core/styles";
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
 
 // styles for new participant form
 const styles = () =>({
@@ -40,7 +39,7 @@ class CauseSelect extends Component {
         event.preventDefault();
         console.log(event.currentTarget.value)
         this.setState({ cause: event.currentTarget.value }, () => {
-            // this.getCauseData()
+            this.getCauseData()
             // this.setState({ cause: null })
         })
     }
