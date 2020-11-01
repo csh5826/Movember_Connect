@@ -125,10 +125,10 @@ router.get('/causedata', (req, res, next) => {
 // returns number of participants during each week of november
 router.get('/timedata', (req, res, next) => {
   Participant.aggregate([{$match:
-      {'time': {$gte: new Date('2020-11-01T00:00:00.000Z'), $lt: new Date('2020-11-08T100:00:00.000Z')}}},
+      {'time': {$gte: new Date('2020-11-01T00:00:00.000Z'), $lt: new Date('2020-11-08T00:00:00.000Z')}}},
       {$group: {_id:null, weekOne: {$sum: 1}}}]).exec((err, weekOne) => {
         Participant.aggregate([{$match:
-          {'time': {$gte: new Date('2020-11-08T00:00:00.000Z'), $lt: new Date('2020-11-015T00:00:00.000Z')}}},
+          {'time': {$gte: new Date('2020-11-08T00:00:00.000Z'), $lt: new Date('2020-11-15T00:00:00.000Z')}}},
           {$group: {_id:null, weekTwo: {$sum: 1}}}]).exec((err, weekTwo) => {
             Participant.aggregate([{$match:
               {'time': {$gte: new Date('2020-11-15T00:00:00.000Z'), $lt: new Date('2020-11-22T00:00:00.000Z')}}},
@@ -156,6 +156,19 @@ router.get('/timedata', (req, res, next) => {
     })
 })
 
+// router.get('/timedata', (req, res, next) => {
+//     Participant.aggregate([{$match:
+//         {'time': {$gte: new Date('2020-11-01T00:00:00.000Z'), $lt: new Date('2020-11-08T00:00:00.000Z')}}},
+//         {$group: {_id:null, weekOne: {$sum: 1}}}]).exec((err, weekOne) => {
+//           if (err) throw err
+//           else {
+//             let data = {};
+//             data.weekOneCount = weekOne
+//             res.send(data)
+//           }
+//         })
+      
+// })
   module.exports = router
 
 
