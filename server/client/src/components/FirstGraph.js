@@ -19,10 +19,11 @@ class FirstGraph extends Component {
       labels: ['# of participants', 'Amount pledged'],
       datasets: [
         {
-          label: 'Participants',
+          label: 'Participants ', 
+          barThickness: 150,
           backgroundColor: '#800000',
-          borderColor: 'rgba(0,0,0,1)',
-          borderWidth: 2,
+          borderColor: '#000000',
+          borderWidth: 3,
           data: [totalParticipants, totalPledged]
         }
       ]

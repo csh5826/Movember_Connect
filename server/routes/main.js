@@ -13,8 +13,8 @@ router.get('/generate-fake-data', (req, res, next) => {
       // 'Prostate cancer'
       participant.name = faker.name.firstName()
       participant.address = faker.address.streetAddress()
-      participant.cause = 'Men\'s mental health awareness'
-      participant.pledge = Math.floor(Math.random() * 200)+ 1
+      participant.cause = 'Testicular cancer'
+      participant.pledge = Math.floor(Math.random() * 300)
       participant.story = faker.lorem.sentences()
       participant.time = faker.date.between('2020-11-01', '2020-11-31')
   
