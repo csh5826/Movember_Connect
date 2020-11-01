@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 class FirstGraph extends Component {
     
   render() {
+    // get variables from our props
     let totalParticipants = this.props.participantsCauseData.specificTotalParticipants
     let totalPledged;
     if (this.props.participantsCauseData.specificTotalPledged.length === 0){
@@ -14,12 +15,13 @@ class FirstGraph extends Component {
     else{
       totalPledged = this.props.participantsCauseData.specificTotalPledged[0].total
     }
+    let dataLabel = this.props.participantsCauseData.participantsCause
     console.log(totalParticipants)
     const data = {
       labels: ['# of participants', 'Amount pledged'],
       datasets: [
         {
-          label: 'Participants ', 
+          label: dataLabel,
           barThickness: 150,
           backgroundColor: '#800000',
           borderColor: '#000000',
