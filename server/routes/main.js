@@ -99,11 +99,12 @@ router.post('/participants', async (req,res, next) => {
 })
 
 // get specific cause data
-router.get('/cause', (req, res, next) => {
+router.get('/causedata', (req, res, next) => {
   // required query
   const cause = req.query.cause;
   let query = {};
   query.cause = cause;
+  Participant.find(query).exec((err, participant) => {  
     Participant.countDocuments(query).exec((err, count) =>{
       Participant.aggregate([{$match: 
         {'cause': cause}},
@@ -114,10 +115,12 @@ router.get('/cause', (req, res, next) => {
           let info = {};
           info.specificTotalParticipants = count
           info.specificTotalPledged = total
+          info.participantsCause= cause
           res.send(info)
           }
       })
     })
+  })
 })
 
   module.exports = router
