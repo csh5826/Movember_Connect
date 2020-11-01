@@ -11,7 +11,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { createParticipant } from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 // styles for new participant form
@@ -43,9 +43,6 @@ const styles = () =>({
   }
 })
 
-// sendParticipant= () => {
-
-// }
 class NewParticipant extends React.Component {
   constructor (){
     super()
@@ -106,9 +103,9 @@ class NewParticipant extends React.Component {
           fullWidth
           className={classes.textField, classes.select}
         >
-          <MenuItem value={'Prostate Cancer'}>Prostate Cancer</MenuItem>
-          <MenuItem value={'Testicular Cancer'}>Testicular Cancer</MenuItem>
-          <MenuItem value={'Testicular Cancer'}>Men's mental health awareness</MenuItem>
+          <MenuItem value={'Prostate cancer'}>Prostate Cancer</MenuItem>
+          <MenuItem value={'Testicular cancer'}>Testicular Cancer</MenuItem>
+          <MenuItem value={'Men\'s mental health awareness'}>Men's Mental Health Awareness</MenuItem>
         </Select>
             <TextField id="outlined-basic" fullWidth label="Pledge" variant="outlined" className={classes.textField} onChange={e => this.setState({pledge: e.target.value})}/>
             <TextField id="outlined-basic" multiline fullWidth label="Your Why" variant="outlined" className={classes.textField} onChange={e => this.setState({story: e.target.value})}/>
