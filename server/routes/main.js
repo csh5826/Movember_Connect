@@ -104,7 +104,6 @@ router.get('/causedata', (req, res, next) => {
   const cause = req.query.cause;
   let query = {};
   query.cause = cause;
-  Participant.find(query).exec((err, participant) => {  
     Participant.countDocuments(query).exec((err, count) =>{
       Participant.aggregate([{$match: 
         {'cause': cause}},
@@ -118,9 +117,8 @@ router.get('/causedata', (req, res, next) => {
           info.participantsCause= cause
           res.send(info)
           }
-      })
+        })
     })
-  })
 })
 
   module.exports = router
