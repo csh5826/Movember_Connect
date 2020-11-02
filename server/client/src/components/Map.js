@@ -44,7 +44,7 @@ class Map extends Component {
             // creates points for all coordinates in database
             this.props.participantsData.participants.map(participant => {
                 //shows name on click
-                let popup = new mapboxgl.Popup({offset: 50}).setHTML('<h2>' + participant.name + '\'s ' + 'story and cause: ' + participant.cause + '</h2>' +'<h3>' + 'Pledging $' + participant.pledge + '<h3>' + '<p>' + participant.story + '<p>')
+                let popup = new mapboxgl.Popup({offset: 50}).setHTML('<h1>' + participant.name + '</h1>' +'<h2>' + 'Pledging $' + participant.pledge + '</h2>' + '<h2>' + participant.cause + '</h2>' + '<p>' + participant.story + '<p>')
                 new mapboxgl.Marker().setLngLat(participant.location.coordinates).setPopup(popup).addTo(map)
                 // console.log(participant.location.coordinates)
             })
@@ -57,10 +57,10 @@ class Map extends Component {
         return (
             <Fragment>
                 <Container>
-                        <div className='sidebarStyle' style={{backgroundColor: '#800000', color: '#FFFFFF'}}>
+                        {/* <div className='sidebarStyle' style={{backgroundColor: '#800000', color: '#FFFFFF'}}>
                             Longitude: {this.state.lng} | Latitude: {this.state.lat} |
                             Zoom: {this.state.zoom}
-                        </div>
+                        </div> */}
                             <div className='mapContainer' ref={(el) => (this.mapContainer = el)}/>
                 </Container>
             </Fragment>
