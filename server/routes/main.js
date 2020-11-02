@@ -126,19 +126,19 @@ router.get('/causedata', (req, res, next) => {
 router.get('/timedata', (req, res, next) => {
   Participant.aggregate([{$match:
       {'time': {$gte: new Date('2020-11-01T00:00:00.000Z'), $lt: new Date('2020-11-08T00:00:00.000Z')}}},
-      {$group: {_id:null, weekOne: {$sum: 1}}}]).exec((err, weekOne) => {
+      {$group: {_id:null, weekOne: {$sum: 1}, totalPledgedOne: {$sum: '$pledge'}}}]).exec((err, weekOne) => {
         Participant.aggregate([{$match:
           {'time': {$gte: new Date('2020-11-08T00:00:00.000Z'), $lt: new Date('2020-11-15T00:00:00.000Z')}}},
-          {$group: {_id:null, weekTwo: {$sum: 1}}}]).exec((err, weekTwo) => {
+          {$group: {_id:null, weekTwo: {$sum: 1}, totalPledgedTwo: {$sum: '$pledge'}}}]).exec((err, weekTwo) => {
             Participant.aggregate([{$match:
               {'time': {$gte: new Date('2020-11-15T00:00:00.000Z'), $lt: new Date('2020-11-22T00:00:00.000Z')}}},
-              {$group: {_id:null, weekThree: {$sum: 1}}}]).exec((err, weekThree) => {
+              {$group: {_id:null, weekThree: {$sum: 1}, totalPledgedThree: {$sum: '$pledge'}}}]).exec((err, weekThree) => {
                 Participant.aggregate([{$match:
                   {'time': {$gte: new Date('2020-11-22T00:00:00.000Z'), $lt: new Date('2020-11-29T00:00:00.000Z')}}},
-                  {$group: {_id:null, weekFour: {$sum: 1}}}]).exec((err, weekFour)=> {
+                  {$group: {_id:null, weekFour: {$sum: 1}, totalPledgedFour: {$sum: '$pledge'}}}]).exec((err, weekFour)=> {
                     Participant.aggregate([{$match:
                       {'time': {$gte: new Date('2020-11-29T00:00:00.000Z'), $lt: new Date('2020-12-01T00:00:00.000Z')}}},
-                      {$group: {_id:null, weekFive: {$sum: 1}}}]).exec((err, weekFive) => {
+                      {$group: {_id:null, weekFive: {$sum: 1}, totalPledgedFive: {$sum: '$pledge'}}}]).exec((err, weekFive) => {
                         if (err) throw err
                         else {
                           let data = {};

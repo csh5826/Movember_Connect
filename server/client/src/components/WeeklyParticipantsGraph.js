@@ -5,31 +5,31 @@ import { connect } from 'react-redux';
 import { fetchWeeklyData } from '../actions';
 import { bindActionCreators } from 'redux';
 
-class WeeklyGraph extends Component {
+class WeeklyParticipantsGraph extends Component {
     
   componentDidMount(){
     this.props.fetchWeeklyData()
   }
   render() {
-    let totalWeekOne;
-    let totalWeekTwo;
-    let totalWeekThree;
-    let totalWeekFour;
-    let totalWeekFive;
+    let participantsWeekOne;
+    let participantsWeekTwo;
+    let participantsWeekThree;
+    let participantsWeekFour;
+    let participantsWeekFive;
     // get variables from our props
     if (this.props.participantsWeeklyData.weekOneCount.length === 0 || this.props.participantsWeeklyData.weekTwoCount.length === 0 || this.props.participantsWeeklyData.weekThreeCount.length === 0 || this.props.participantsWeeklyData.weekFourCount.length === 0 || this.props.participantsWeeklyData.weekFiveCount.length === 0){
-      totalWeekOne = 0
-      totalWeekTwo = 0
-      totalWeekThree = 0
-      totalWeekFour = 0
-      totalWeekFive = 0
+      participantsWeekOne = 0
+      participantsWeekTwo = 0
+      participantsWeekThree = 0
+      participantsWeekFour = 0
+      participantsWeekFive = 0
     }
     else{
-      totalWeekOne = this.props.participantsWeeklyData.weekOneCount[0].weekOne
-      totalWeekTwo = this.props.participantsWeeklyData.weekTwoCount[0].weekTwo
-      totalWeekThree = this.props.participantsWeeklyData.weekThreeCount[0].weekThree
-      totalWeekFour = this.props.participantsWeeklyData.weekFourCount[0].weekFour
-      totalWeekFive = this.props.participantsWeeklyData.weekFiveCount[0].weekFive
+      participantsWeekOne = this.props.participantsWeeklyData.weekOneCount[0].weekOne
+      participantsWeekTwo = this.props.participantsWeeklyData.weekTwoCount[0].weekTwo
+      participantsWeekThree = this.props.participantsWeeklyData.weekThreeCount[0].weekThree
+      participantsWeekFour = this.props.participantsWeeklyData.weekFourCount[0].weekFour
+      participantsWeekFive = this.props.participantsWeeklyData.weekFiveCount[0].weekFive
     }
     
     const data = {
@@ -41,7 +41,7 @@ class WeeklyGraph extends Component {
           // backgroundColor: '#800000',
           borderColor: '#800000',
           borderWidth: 3,
-          data: [totalWeekOne, totalWeekTwo, totalWeekThree, totalWeekFour, totalWeekFive]
+          data: [participantsWeekOne, participantsWeekOne + participantsWeekTwo, participantsWeekOne + participantsWeekTwo +participantsWeekThree, participantsWeekOne + participantsWeekTwo +participantsWeekThree+ participantsWeekFour, participantsWeekOne + participantsWeekTwo +participantsWeekThree+ participantsWeekFour+participantsWeekFive]
         }
       ]
     }
@@ -53,7 +53,7 @@ class WeeklyGraph extends Component {
           options={{
             title:{
               display:true,
-              text: 'Number of participants added each week of November',
+              text: 'Participants added week over week',
               fontSize:20
             },
             legend:{
@@ -75,4 +75,4 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch){
   return bindActionCreators({ fetchWeeklyData }, dispatch);
 }
-export default connect(mapStateToProps, mapDispatchToProps)(WeeklyGraph);
+export default connect(mapStateToProps, mapDispatchToProps)(WeeklyParticipantsGraph);
