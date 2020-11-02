@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
-import {Line} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 import { connect } from 'react-redux';
 
 class CausePledgedGraph extends Component {
@@ -32,23 +32,23 @@ class CausePledgedGraph extends Component {
       datasets: [
         {
           label: dataLabel,
-          barThickness: 150,
+          barThickness: 100,
           // backgroundColor: '#800000',
           borderColor: '#800000',
-          borderWidth: 3,
-          data: [causePledgedOne, causePledgedOne + causePledgedTwo, causePledgedOne + causePledgedTwo + causePledgedThree, causePledgedOne + causePledgedTwo + causePledgedThree + causePledgedFour, causePledgedOne + causePledgedTwo + causePledgedThree + causePledgedFour + causePledgedFive]
+          borderWidth: 2,
+          data: [causePledgedOne,causePledgedTwo,causePledgedThree,causePledgedFour,causePledgedFive]
         }
       ]
     }
     return (
       <React.Fragment>
           <Container maxWidth='md' style={{marginTop: 50}}>
-        <Line
+        <Bar
           data={data}
           options={{
             title:{
               display:true,
-              text: this.props.participantsCauseData.participantsCause + ' pledged amount week over week',
+              text: this.props.participantsCauseData.participantsCause + ' pledged amount per week',
               fontSize:20
             },
             legend:{

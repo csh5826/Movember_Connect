@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
-import {Line} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 import { connect } from 'react-redux';
 // import { fetchWeeklyData } from '../actions';
 // import { bindActionCreators } from 'redux';
@@ -36,24 +36,24 @@ class WeeklyPledgedGraph extends Component {
       labels: ['Week One', 'Week Two', 'Week Three', 'Week Four', 'Week Five'],
       datasets: [
         {
-          label: 'Participants added',
+          label: 'Amount pledged',
           lineTension: 0.5,
           // backgroundColor: '#800000',
           borderColor: '#800000',
           borderWidth: 3,
-          data: [pledgedWeekOne, pledgedWeekOne + pledgedWeekTwo, pledgedWeekOne + pledgedWeekTwo +pledgedWeekThree, pledgedWeekOne + pledgedWeekTwo +pledgedWeekThree+ pledgedWeekFour, pledgedWeekOne + pledgedWeekTwo +pledgedWeekThree+ pledgedWeekFour+pledgedWeekFive]
+          data: [pledgedWeekOne,pledgedWeekTwo,pledgedWeekThree,pledgedWeekFour, pledgedWeekFive]
         }
       ]
     }
     return (
       <React.Fragment>
           <Container maxWidth='lg' style={{marginTop: 140}}>
-        <Line
+        <Bar
           data={data}
           options={{
             title:{
               display:true,
-              text: 'Pledged amount week over week',
+              text: 'Pledged amount per week',
               fontSize:20
             },
             legend:{

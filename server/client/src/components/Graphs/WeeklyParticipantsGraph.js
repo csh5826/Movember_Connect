@@ -36,7 +36,7 @@ class WeeklyParticipantsGraph extends Component {
       labels: ['Week One', 'Week Two', 'Week Three', 'Week Four', 'Week Five'],
       datasets: [
         {
-          label: 'Participants added',
+          label: '# of participants',
           lineTension: 0.5,
           // backgroundColor: '#800000',
           borderColor: '#800000',

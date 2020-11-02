@@ -6,15 +6,16 @@ const Participant = require('../models/participant')
 
 // generates fake data for participants
 router.get('/generate-fake-data', (req, res, next) => {
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 100; i++) {
       let participant = new Participant()
       // 'Men\'s mental health awareness'
       // 'Testicular cancer'
       // 'Prostate cancer'
       participant.name = faker.name.firstName()
       participant.address = faker.address.streetAddress()
-      participant.cause = 'Testicular cancer'
-      participant.pledge = Math.floor(Math.random() * 300)
+      participant.cause = 'Prostate cancer'
+      participant.pledge = 1200
+      // Math.floor(Math.random() * 600)
       participant.story = faker.lorem.sentences()
       participant.time = faker.date.between('2020-11-01', '2020-11-31')
   
