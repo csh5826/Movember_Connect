@@ -21,7 +21,7 @@ class ParticipantStats extends Component {
         else {
             return (
                 <div style={{marginTop: 75, textAlign: 'center'}}>
-                    <h1>{this.props.participantsData.totalParticipants} participating and ${this.props.participantsData.totalPledged[0].total} pledged</h1>
+                    <h1>{this.props.participantsData.totalParticipants.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} participating and ${this.props.participantsData.totalPledged[0].total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} pledged</h1>
                 </div>
                 )
         }
