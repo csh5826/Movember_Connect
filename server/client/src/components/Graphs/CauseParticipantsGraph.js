@@ -42,7 +42,7 @@ class CauseParticipantsGraph extends Component {
     }
     return (
       <React.Fragment>
-          <Container maxWidth='lg' style={{marginTop: 140}}>
+          <Container maxWidth='md' style={{marginTop: 50}}>
         <Line
           data={data}
           options={{
