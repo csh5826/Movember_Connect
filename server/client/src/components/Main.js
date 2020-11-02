@@ -7,6 +7,7 @@ import CausePledgedGraph from './Graphs/CausePledgedGraph';
 import CauseSelect from './Graphs/CauseSelect';
 import WeeklyParticipantsGraph from './Graphs/WeeklyParticipantsGraph';
 import WeeklyPledgedGraph from './Graphs/WeeklyPledgedGraph';
+import Grid from '@material-ui/core/Grid'
 
 
 const Main = () => {
@@ -19,8 +20,14 @@ const Main = () => {
         <WeeklyParticipantsGraph />
         <WeeklyPledgedGraph />
         <CauseSelect />
-        <CauseParticipantsGraph />
-        <CausePledgedGraph />
+        <Grid container spacing={2} style={{marginTop: 25}}>
+          <Grid item lg={6}>
+          <CauseParticipantsGraph />
+          </Grid>
+          <Grid item lg={6}>
+          <CausePledgedGraph />
+          </Grid>
+        </Grid>
 
     </Fragment>
   );

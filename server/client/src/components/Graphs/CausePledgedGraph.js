@@ -42,7 +42,6 @@ class CausePledgedGraph extends Component {
     }
     return (
       <React.Fragment>
-          <Container maxWidth='md' style={{marginTop: 50}}>
         <Bar
           data={data}
           options={{
@@ -57,7 +56,6 @@ class CausePledgedGraph extends Component {
             }
           }}
         />
-        </Container>
       </React.Fragment>
     );
   }
