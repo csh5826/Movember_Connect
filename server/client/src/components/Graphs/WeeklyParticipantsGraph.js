@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
 import {Line} from 'react-chartjs-2';
 import { connect } from 'react-redux';
-import { fetchWeeklyData } from '../actions';
+import { fetchWeeklyData } from '../../actions';
 import { bindActionCreators } from 'redux';
 
 class WeeklyParticipantsGraph extends Component {

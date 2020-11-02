@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 import NavBar from './NavBar';
 import Map from './Map';
 import ParticipantsStats from './ParticipantStats';
-import CauseGraph from './CauseGraph';
-import CauseSelect from './CauseSelect';
-import WeeklyParticipantsGraph from './WeeklyParticipantsGraph';
-import WeeklyPledgedGraph from './WeeklyPledgedGraph';
+import CauseParticipantsGraph from './Graphs/CauseParticipantsGraph';
+import CauseSelect from './Graphs/CauseSelect';
+import WeeklyParticipantsGraph from './Graphs/WeeklyParticipantsGraph';
+import WeeklyPledgedGraph from './Graphs/WeeklyPledgedGraph';
 
 const Main = () => {
   return (
@@ -17,7 +17,7 @@ const Main = () => {
         <WeeklyParticipantsGraph />
         <WeeklyPledgedGraph />
         <CauseSelect />
-        <CauseGraph />
+        <CauseParticipantsGraph />
 
     </Fragment>
   );

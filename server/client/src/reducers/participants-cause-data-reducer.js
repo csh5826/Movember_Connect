@@ -1,6 +1,6 @@
 import { FETCH_CAUSE_DATA } from '../actions';
 
-export default (state = {specificTotalParticipants: null, specificTotalPledged: [], participantsCause: ''}, action) => {
+export default (state = {weekOneInfo: [], weekTwoInfo: [], weekThreeInfo: [], weekFourInfo: [], weekFiveInfo: [], participantsCause: ''}, action) => {
     switch (action.type){
         case FETCH_CAUSE_DATA:
             console.log('data returning from participants cause data reducer is', action.payload.data)
