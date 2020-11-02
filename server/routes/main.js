@@ -99,27 +99,71 @@ router.post('/participants', async (req,res, next) => {
 })
 
 // get specific cause data
+// router.get('/causedata', (req, res, next) => {
+//   // required query
+//   const cause = req.query.cause;
+//   let query = {};
+//   query.cause = cause;
+//     Participant.countDocuments(query).exec((err, count) =>{
+//       Participant.aggregate([{$match: 
+//         {'cause': cause}},
+//         {$group: {_id: null, total: {$sum: "$pledge"}}}])
+//         .exec((err, total) =>{
+//           if (err) throw err
+//           else {
+//           let info = {};
+//           info.specificTotalParticipants = count
+//           info.specificTotalPledged = total
+//           info.participantsCause= cause
+//           res.send(info)
+//           }
+//         })
+//     })
+// })
+
+//get specific cause data
 router.get('/causedata', (req, res, next) => {
   // required query
   const cause = req.query.cause;
   let query = {};
   query.cause = cause;
-    Participant.countDocuments(query).exec((err, count) =>{
       Participant.aggregate([{$match: 
-        {'cause': cause}},
-        {$group: {_id: null, total: {$sum: "$pledge"}}}])
-        .exec((err, total) =>{
-          if (err) throw err
-          else {
-          let info = {};
-          info.specificTotalParticipants = count
-          info.specificTotalPledged = total
-          info.participantsCause= cause
-          res.send(info)
-          }
+        {'cause': cause, 'time': {$gte: new Date('2020-11-01T00:00:00.000Z'), $lt: new Date('2020-11-08T00:00:00.000Z')}}},
+        {$group: {_id: null, totalPledgedOne: {$sum: "$pledge"}, totalCountOne: {$sum: 1}}}])
+        .exec((err, weekOne) =>{
+          Participant.aggregate([{$match: 
+            {'cause': cause, 'time': {$gte: new Date('2020-11-08T00:00:00.000Z'), $lt: new Date('2020-11-15T00:00:00.000Z')}}},
+            {$group: {_id: null, totalPledgedTwo: {$sum: "$pledge"}, totalCountTwo: {$sum: 1}}}])
+            .exec((err, weekTwo) =>{
+              Participant.aggregate([{$match: 
+                {'cause': cause, 'time': {$gte: new Date('2020-11-15T00:00:00.000Z'), $lt: new Date('2020-11-22T00:00:00.000Z')}}},
+                {$group: {_id: null, totalPledgedThree: {$sum: "$pledge"}, totalCountThree: {$sum: 1}}}])
+                .exec((err, weekThree) =>{
+                  Participant.aggregate([{$match: 
+                    {'cause': cause, 'time': {$gte: new Date('2020-11-22T00:00:00.000Z'), $lt: new Date('2020-11-29T00:00:00.000Z')}}},
+                    {$group: {_id: null, totalPledgedFour: {$sum: "$pledge"}, totalCountFour: {$sum: 1}}}])
+                    .exec((err, weekFour) =>{
+                      Participant.aggregate([{$match: 
+                        {'cause': cause, 'time': {$gte: new Date('2020-11-29T00:00:00.000Z'), $lt: new Date('2020-12-01T00:00:00.000Z')}}},
+                        {$group: {_id: null, totalPledgedFive: {$sum: "$pledge"}, totalCountFive: {$sum: 1}}}])
+                        .exec((err, weekFive) =>{
+                          if (err) throw err
+                          else {
+                          let data = {};
+                          data.weekOneInfo = weekOne
+                          data.weekTwoInfo = weekTwo
+                          data.weekThreeInfo = weekThree
+                          data.weekFourInfo = weekFour
+                          data.weekFiveInfo = weekFive
+                          data.participantsCause= cause
+                          res.send(data)
+                          }
+                        })
+                      })
+                  })
+              })
         })
     })
-})
 
 //get time data
 // returns number of participants during each week of november
