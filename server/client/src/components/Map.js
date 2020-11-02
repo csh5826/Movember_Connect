@@ -43,9 +43,12 @@ class Map extends Component {
         map.on('load', () => {
             // creates points for all coordinates in database
             this.props.participantsData.participants.map(participant => {
+                //custom marker
+                const el = document.createElement('div');
+                el.className = 'marker';
                 //shows name on click
                 let popup = new mapboxgl.Popup({offset: 50}).setHTML('<h1>' + participant.name + '</h1>' +'<h2>' + 'Pledging $' + participant.pledge + '</h2>' + '<h2>' + participant.cause + '</h2>' + '<p>' + participant.story + '<p>')
-                new mapboxgl.Marker().setLngLat(participant.location.coordinates).setPopup(popup).addTo(map)
+                new mapboxgl.Marker(el).setLngLat(participant.location.coordinates).setPopup(popup).addTo(map)
                 // console.log(participant.location.coordinates)
             })
         })

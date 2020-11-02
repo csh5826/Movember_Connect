@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
-import {Line} from 'react-chartjs-2';
+import {Line, defaults} from 'react-chartjs-2';
 import { connect } from 'react-redux';
+
+// set styles of charts
+defaults.global.defaultFontFamily = 'geneva,arial,helvetica';
+defaults.global.defaultFontColor = 'black';
 
 class CauseParticipantsGraph extends Component {
     
@@ -35,7 +39,7 @@ class CauseParticipantsGraph extends Component {
           barThickness: 150,
           // backgroundColor: '#800000',
           borderColor: '#800000',
-          borderWidth: 3,
+          borderWidth: 2,
           data: [causeParticipantsOne, causeParticipantsOne + causeParticipantsTwo, causeParticipantsOne + causeParticipantsTwo + causeParticipantsThree, causeParticipantsOne + causeParticipantsTwo + causeParticipantsThree + causeParticipantsFour, causeParticipantsOne + causeParticipantsTwo + causeParticipantsThree + causeParticipantsFour + causeParticipantsFive]
         }
       ]

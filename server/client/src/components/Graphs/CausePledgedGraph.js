@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
-import {Bar} from 'react-chartjs-2';
+import {Bar, defaults} from 'react-chartjs-2';
 import { connect } from 'react-redux';
 
+// set styles of charts
+defaults.global.defaultFontFamily = 'geneva,arial,helvetica';
+defaults.global.defaultFontColor = 'black';
 class CausePledgedGraph extends Component {
     
   render() {

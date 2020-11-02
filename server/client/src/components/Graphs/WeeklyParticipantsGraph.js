@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
-import {Line} from 'react-chartjs-2';
+import {Line, defaults} from 'react-chartjs-2';
 import { connect } from 'react-redux';
 import { fetchWeeklyData } from '../../actions';
 import { bindActionCreators } from 'redux';
+
+// set styles of charts
+defaults.global.defaultFontFamily = 'geneva,arial,helvetica';
+defaults.global.defaultFontColor = 'black';
 
 class WeeklyParticipantsGraph extends Component {
     
@@ -33,14 +37,14 @@ class WeeklyParticipantsGraph extends Component {
     }
     
     const data = {
-      labels: ['Week One', 'Week Two', 'Week Three', 'Week Four', 'Week Five'],
+      labels: ['Nov 1-7', 'Nov 8-14', 'Nov 16-22', 'Nov 23-29', 'Nov 29-30'],
       datasets: [
         {
           label: '# of participants',
           lineTension: 0.5,
           // backgroundColor: '#800000',
           borderColor: '#800000',
-          borderWidth: 3,
+          borderWidth: 2,
           data: [participantsWeekOne, participantsWeekOne + participantsWeekTwo, participantsWeekOne + participantsWeekTwo +participantsWeekThree, participantsWeekOne + participantsWeekTwo +participantsWeekThree+ participantsWeekFour, participantsWeekOne + participantsWeekTwo +participantsWeekThree+ participantsWeekFour+participantsWeekFive]
         }
       ]

@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
-import {Bar} from 'react-chartjs-2';
+import {Bar, defaults} from 'react-chartjs-2';
 import { connect } from 'react-redux';
-// import { fetchWeeklyData } from '../actions';
-// import { bindActionCreators } from 'redux';
+
+// set styles of charts
+defaults.global.defaultFontFamily = 'geneva,arial,helvetica';
+defaults.global.defaultFontColor = 'black';
 
 class WeeklyPledgedGraph extends Component {
     
-//   componentDidMount(){
-//     this.props.fetchWeeklyData()
-//   }
   render() {
     let pledgedWeekOne;
     let pledgedWeekTwo;
@@ -33,14 +32,14 @@ class WeeklyPledgedGraph extends Component {
     }
     
     const data = {
-      labels: ['Week One', 'Week Two', 'Week Three', 'Week Four', 'Week Five'],
+      labels: ['Nov 1-7', 'Nov 8-14', 'Nov 16-22', 'Nov 23-29', 'Nov 29-30'],
       datasets: [
         {
           label: 'Amount pledged',
           lineTension: 0.5,
           // backgroundColor: '#800000',
           borderColor: '#800000',
-          borderWidth: 3,
+          borderWidth: 2,
           data: [pledgedWeekOne,pledgedWeekTwo,pledgedWeekThree,pledgedWeekFour, pledgedWeekFive]
         }
       ]
@@ -72,7 +71,4 @@ function mapStateToProps(state) {
   return { participantsWeeklyData: state.participantsWeeklyData }; 
 }
 
-// function mapDispatchToProps(dispatch){
-//   return bindActionCreators({ fetchWeeklyData }, dispatch);
-// }
 export default connect(mapStateToProps)(WeeklyPledgedGraph);
