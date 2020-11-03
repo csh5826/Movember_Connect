@@ -38,7 +38,7 @@ class CauseParticipantsGraph extends Component {
           label: dataLabel,
           barThickness: 150,
           // backgroundColor: '#800000',
-          borderColor: '#800000',
+          borderColor: '#2F4F4F',
           borderWidth: 2,
           data: [causeParticipantsOne, causeParticipantsOne + causeParticipantsTwo, causeParticipantsOne + causeParticipantsTwo + causeParticipantsThree, causeParticipantsOne + causeParticipantsTwo + causeParticipantsThree + causeParticipantsFour, causeParticipantsOne + causeParticipantsTwo + causeParticipantsThree + causeParticipantsFour + causeParticipantsFive]
         }

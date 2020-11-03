@@ -38,7 +38,7 @@ class WeeklyPledgedGraph extends Component {
           label: 'Amount pledged',
           lineTension: 0.5,
           // backgroundColor: '#800000',
-          borderColor: '#800000',
+          borderColor: '#2F4F4F',
           borderWidth: 2,
           data: [pledgedWeekOne,pledgedWeekTwo,pledgedWeekThree,pledgedWeekFour, pledgedWeekFive]
         }

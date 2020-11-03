@@ -23,21 +23,21 @@ const styles = () =>({
     marginTop: 40,
     display: 'block',
     '& label.Mui-focused': {
-      color: '#800000'
+      color: '#2F4F4F'
     },
     '& .MuiOutlinedInput-root': {
       '&.Mui-focused fieldset': {
-        borderColor: '#800000',
+        borderColor: '#2F4F4F',
       }
     }
   },
   select: {
     '&:after': {
-      borderColor: '#800000'
+      borderColor: '#2F4F4F'
     }   
   },
   button: {
-    backgroundColor: '#800000',
+    backgroundColor: '#2F4F4F',
     color: 'white',
     marginTop: 15
   }

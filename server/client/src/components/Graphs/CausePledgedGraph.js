@@ -37,7 +37,7 @@ class CausePledgedGraph extends Component {
           label: dataLabel,
           barThickness: 100,
           // backgroundColor: '#800000',
-          borderColor: '#800000',
+          borderColor: '#2F4F4F',
           borderWidth: 2,
           data: [causePledgedOne,causePledgedTwo,causePledgedThree,causePledgedFour,causePledgedFive]
         }

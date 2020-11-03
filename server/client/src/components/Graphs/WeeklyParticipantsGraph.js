@@ -43,7 +43,7 @@ class WeeklyParticipantsGraph extends Component {
           label: '# of participants',
           lineTension: 0.5,
           // backgroundColor: '#800000',
-          borderColor: '#800000',
+          borderColor: '#2F4F4F',
           borderWidth: 2,
           data: [participantsWeekOne, participantsWeekOne + participantsWeekTwo, participantsWeekOne + participantsWeekTwo +participantsWeekThree, participantsWeekOne + participantsWeekTwo +participantsWeekThree+ participantsWeekFour, participantsWeekOne + participantsWeekTwo +participantsWeekThree+ participantsWeekFour+participantsWeekFive]
         }

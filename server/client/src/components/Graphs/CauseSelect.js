@@ -10,7 +10,7 @@ import Container from '@material-ui/core/Container';
 // styles for new participant form
 const styles = () =>({
     button: {
-      backgroundColor: '#800000',
+      backgroundColor: '#2F4F4F',
       color: '#FFFFFF',
       borderColor: '#FFFFFF'
     },

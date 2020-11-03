@@ -13,7 +13,7 @@ const useStyles = makeStyles({
         marginRight: 12
     },
     appBar: {
-        background: '#800000'
+        background: '#2F4F4F'
     },
     home:{
         marginRight: 70
