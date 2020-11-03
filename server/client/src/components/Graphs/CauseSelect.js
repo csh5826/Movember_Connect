@@ -26,10 +26,14 @@ class CauseSelect extends Component {
         super()
 
         this.state = {
-            cause: null
+            cause: 'Prostate cancer'
         }
         this.selectCause = this.selectCause.bind(this);
         console.log('state is', this.state)
+    }
+    // adds in base line data on page load
+    componentDidMount(){
+        this.props.fetchCauseData(this.state)
     }
     // helper function for fetch cause data
     getCauseData() {
