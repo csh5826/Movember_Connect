@@ -25,11 +25,12 @@ body {
 }
 
 .marker {
-    background-image: url('https://cdn11.bigcommerce.com/s-fpinx/images/stencil/1280x1280/products/254491/172592/Mustache-Ball-Marker-2__22581.1455149486.png?c=2');
+    background-image: url('map_marker.png');
     background-size: cover;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
   }
+
 

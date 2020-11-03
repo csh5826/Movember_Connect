@@ -17,11 +17,11 @@ class WeeklyPledgedGraph extends Component {
     let pledgedWeekFive;
     // get variables from our props
     if (this.props.participantsWeeklyData.weekOneCount.length === 0 || this.props.participantsWeeklyData.weekTwoCount.length === 0 || this.props.participantsWeeklyData.weekThreeCount.length === 0 || this.props.participantsWeeklyData.weekFourCount.length === 0 || this.props.participantsWeeklyData.weekFiveCount.length === 0){
-        pledgedWeekOne = 0
-        pledgedWeekTwo = 0
-        pledgedWeekThree = 0
-        pledgedWeekFour = 0
-        pledgedWeekFive = 0
+        pledgedWeekOne = null;
+        pledgedWeekTwo = null;
+        pledgedWeekThree = null;
+        pledgedWeekFour = null;
+        pledgedWeekFive = null;
     }
     else{
         pledgedWeekOne = this.props.participantsWeeklyData.weekOneCount[0].totalPledgedOne

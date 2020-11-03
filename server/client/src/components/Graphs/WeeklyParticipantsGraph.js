@@ -22,11 +22,11 @@ class WeeklyParticipantsGraph extends Component {
     let participantsWeekFive;
     // get variables from our props
     if (this.props.participantsWeeklyData.weekOneCount.length === 0 || this.props.participantsWeeklyData.weekTwoCount.length === 0 || this.props.participantsWeeklyData.weekThreeCount.length === 0 || this.props.participantsWeeklyData.weekFourCount.length === 0 || this.props.participantsWeeklyData.weekFiveCount.length === 0){
-      participantsWeekOne = 0
-      participantsWeekTwo = 0
-      participantsWeekThree = 0
-      participantsWeekFour = 0
-      participantsWeekFive = 0
+      participantsWeekOne = null;
+      participantsWeekTwo = null;
+      participantsWeekThree = null;
+      participantsWeekFour = null;
+      participantsWeekFive = null;
     }
     else{
       participantsWeekOne = this.props.participantsWeeklyData.weekOneCount[0].weekOne

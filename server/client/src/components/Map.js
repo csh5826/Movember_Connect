@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchParticipants } from '../actions'
-import '../style.css';
+import '../styling/style.css';
 
 
 mapboxgl.accessToken =

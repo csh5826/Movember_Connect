@@ -11,12 +11,13 @@ import Container from '@material-ui/core/Container';
 const styles = () =>({
     button: {
       backgroundColor: '#800000',
-      color: '#FFFFFF'
+      color: '#FFFFFF',
+      borderColor: '#FFFFFF'
     },
     buttonGroup: {
         display: 'center',
         marginTop: 150,
-        borderColor: '#800000'
+        // borderColor: '#800000'
     }
   })
 
@@ -49,7 +50,7 @@ class CauseSelect extends Component {
         return (
             <React.Fragment>
                 <Container maxWidth='xs'>
-                    <ButtonGroup className={classes.buttonGroup} size="large" color="primary" aria-label="large outlined primary button group">
+                    <ButtonGroup className={classes.buttonGroup} size="medium" color="primary" aria-label="large outlined primary button group">
                         <Button className={classes.button}  onClick={this.selectCause} value='Prostate cancer'>Prostate Cancer</Button>
                         <Button className={classes.button} onClick={this.selectCause} value='Testicular cancer'>Testicular Cancer</Button>
                         <Button className={classes.button} onClick={this.selectCause} value="Men's mental health awareness">Men's Mental Health Awareness</Button>
