@@ -35,7 +35,7 @@ class WeeklyPledgedGraph extends Component {
       labels: ['Nov 1-7', 'Nov 8-14', 'Nov 16-22', 'Nov 23-29', 'Nov 29-30'],
       datasets: [
         {
-          label: 'Amount pledged',
+          label: 'Amount pledged in $',
           lineTension: 0.5,
           // backgroundColor: '#800000',
           borderColor: '#2F4F4F',
